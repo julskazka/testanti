@@ -1,121 +1,101 @@
 // js/components/calculator.js
-// Интерактивный калькулятор стоимости разработки Mini App воронок.
+// Квиз-калькулятор стоимости проекта на базе коэффициентов из Google Таблицы.
 
 import { createElement, formatPrice } from '../utils.js';
 
+const BASE_PRICE = 15000;
+const STEPS = [
+  { n: "Тип проекта", opts: [{ t: "Визитка", c: 1.0 }, { t: "Каталог / Портфолио", c: 1.1 }, { t: "Лендинг", c: 1.2 }, { t: "Обучающее апп", c: 1.3 }, { t: "Аппка с воронкой", c: 1.4 }, { t: "Система продаж", c: 1.5 }]},
+  { n: "Структура страниц", opts: [{ t: "до 5 страниц", c: 1.0 }, { t: "5–10 страниц", c: 1.1 }, { t: "10–15 страниц", c: 1.2 }, { t: "15+ страниц", c: 1.3 }]},
+  { n: "Воронка & Логика", opts: [{ t: "Без воронок", c: 1.0 }, { t: "Простая (1-2 шага)", c: 1.1 }, { t: "Многошаговая (3-5)", c: 1.2 }, { t: "Сегментированная", c: 1.3 }]},
+  { n: "Автоматизация", opts: [{ t: "Без автоматизации", c: 1.0 }, { t: "Автосообщения", c: 1.1 }, { t: "Рассылки и триггеры", c: 1.2 }, { t: "CRM и интеграции", c: 1.3 }]},
+  { n: "Контент & Дизайн", opts: [{ t: "Контент от вас + шаблон", c: 1.0 }, { t: "Контент от меня / ИИ", c: 1.2 }, { t: "Под ключ", c: 1.3 }]},
+  { n: "Геймификация", opts: [{ t: "Нет", c: 1.0 }, { t: "Шкала прогресса", c: 1.1 }, { t: "Подарки за баллы", c: 1.2 }]},
+  { n: "Аналитика", opts: [{ t: "Базовая", c: 1.0 }, { t: "Расширенная", c: 1.1 }]},
+  { n: "Поддержка", opts: [{ t: "Только сборка", c: 1.0 }, { t: "1 месяц", c: 1.1 }, { t: "3 месяца", c: 1.2 }, { t: "Полный цикл", c: 1.3 }]},
+  { n: "Роль архитектора", opts: [{ t: "Только сборщик", c: 1.0 }, { t: "Архитектор структуры", c: 1.2 }, { t: "Архитектор + контент", c: 1.3 }, { t: "Архитектор + аналитика + правки", c: 1.4 }]},
+  { n: "Дополнительно", opts: [{ t: "Обучение", c: 1.0 }, { t: "Реклама / Лиды", c: 1.2 }, { t: "Вебинары", c: 1.1 }]}
+];
+
 export function createCalculator() {
   const html = `
-    <section id="calculator" class="py-12 scroll-mt-20">
-      <div class="space-y-8 max-w-2xl mx-auto">
-        <div class="text-center space-y-2">
-          <h2 class="text-2xl sm:text-3xl font-bold text-[var(--color-text)]">Калькулятор стоимости проекта</h2>
-          <p style="color: var(--color-muted)" class="text-xs sm:text-sm max-w-md mx-auto">Выберите параметры воронки для расчета примерной стоимости и сроков.</p>
+    <div id="calc-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm hidden">
+      <div id="calc-card" class="card bg-[var(--color-bg)] w-full max-w-lg relative p-6 rounded-2xl shadow-2xl space-y-6">
+        <button id="calc-close" class="absolute top-4 right-4 text-[var(--color-muted)] hover:text-[var(--color-text)] btn-press"><i data-lucide="x" class="w-5 h-5"></i></button>
+        <div class="text-center space-y-1">
+          <h2 class="text-xl font-bold text-[var(--color-text)]">Расчет стоимости Mini App</h2>
+          <p style="color: var(--color-muted)" class="text-[11px]">Ответьте на вопросы, чтобы узнать стоимость по формуле Google Таблицы.</p>
         </div>
-        <div class="card grid grid-cols-1 md:grid-cols-2 gap-6 bg-[rgba(255,255,255,0.4)] dark:bg-[rgba(255,255,255,0.02)] backdrop-blur-md">
-          <div class="space-y-5 text-sm">
-            <div class="space-y-2">
-              <label class="font-bold text-xs uppercase tracking-wider text-[var(--color-muted)]">Тип воронки / проекта</label>
-              <select id="calc-type" class="w-full px-3 py-2 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg)] text-[var(--color-text)] focus:outline-none focus:border-indigo-500">
-                <option value="lead" data-price="15000" data-days="3">Лид-магнит / Квиз-анкета (15 000 ₽)</option>
-                <option value="funnel" data-price="35000" data-days="7" selected>Сложная автоворонка продаж (35 000 ₽)</option>
-                <option value="miniapp" data-price="60000" data-days="14">Кастомный Mini App / Каталог (60 000 ₽)</option>
-              </select>
-            </div>
-            <div class="space-y-2">
-              <label class="font-bold text-xs uppercase tracking-wider text-[var(--color-muted)]">Дополнительные опции</label>
-              <div class="space-y-2.5">
-                <label class="flex items-center space-x-3 cursor-pointer">
-                  <input type="checkbox" id="opt-vibe" data-price="10000" data-days="2" class="rounded border-[var(--color-border)] text-indigo-600 focus:ring-indigo-500" checked>
-                  <span class="text-xs">Кастомный Vibe Coding (+10 000 ₽)</span>
-                </label>
-                <label class="flex items-center space-x-3 cursor-pointer">
-                  <input type="checkbox" id="opt-getcourse" data-price="15000" data-days="3" class="rounded border-[var(--color-border)] text-indigo-600 focus:ring-indigo-500">
-                  <span class="text-xs">Интеграция с GetCourse (+15 000 ₽)</span>
-                </label>
-                <label class="flex items-center space-x-3 cursor-pointer">
-                  <input type="checkbox" id="opt-crm" data-price="8000" data-days="1" class="rounded border-[var(--color-border)] text-indigo-600 focus:ring-indigo-500">
-                  <span class="text-xs">Аналитика и CRM-связка (+8 000 ₽)</span>
-                </label>
-              </div>
-            </div>
-            <div class="space-y-2">
-              <label class="font-bold text-xs uppercase tracking-wider text-[var(--color-muted)]">Срочность проекта</label>
-              <div class="flex gap-4">
-                <label class="flex items-center space-x-2 cursor-pointer">
-                  <input type="radio" name="calc-speed" value="standard" checked class="text-indigo-600 focus:ring-indigo-500">
-                  <span class="text-xs">Стандарт</span>
-                </label>
-                <label class="flex items-center space-x-2 cursor-pointer">
-                  <input type="radio" name="calc-speed" value="fast" class="text-indigo-600 focus:ring-indigo-500">
-                  <span class="text-xs">Срочно (x1.3 цена, -30% срок)</span>
-                </label>
-              </div>
-            </div>
+        <div class="divider my-0"></div>
+        <div class="flex items-center justify-between text-[11px] text-[var(--color-muted)]">
+          <span id="calc-step-text">Шаг 1 из 10</span>
+          <div class="w-24 h-1.5 bg-[var(--color-border)] rounded-full overflow-hidden">
+            <div id="calc-progress-bar" class="h-full bg-indigo-500 transition-all duration-300" style="width: 10%"></div>
           </div>
-          <div class="rounded-2xl bg-gradient-to-tr from-indigo-500/10 to-purple-500/10 border border-indigo-500/20 p-6 flex flex-col justify-between items-center text-center space-y-4">
-            <div class="space-y-1">
-              <span class="text-xs uppercase font-bold tracking-widest text-indigo-500">Итоговый расчет</span>
-              <div id="calc-result-price" class="text-3xl font-extrabold text-[var(--color-text)]">0 ₽</div>
-              <p style="color: var(--color-muted)" class="text-xs">Ориентировочная стоимость реализации</p>
-            </div>
-            <div class="w-full divider my-2"></div>
-            <div class="flex justify-around w-full text-xs">
-              <div>
-                <span class="block text-[var(--color-muted)]">Сроки</span>
-                <span id="calc-result-days" class="font-bold text-sm text-[var(--color-text)]">0 дней</span>
-              </div>
-              <div class="border-r border-[var(--color-border)]"></div>
-              <div>
-                <span class="block text-[var(--color-muted)]">Связка с GC</span>
-                <span id="calc-result-gc" class="font-bold text-sm text-[var(--color-text)]">Нет</span>
-              </div>
-            </div>
-            <a href="#contact" class="btn-press btn-primary w-full text-center py-2.5 text-xs">Заказать разработку</a>
+        </div>
+        <div id="calc-question-container" class="space-y-4">
+          <h3 id="calc-question-title" class="font-bold text-xs sm:text-sm text-[var(--color-text)]"></h3>
+          <div id="calc-options-list" class="flex flex-col gap-2"></div>
+        </div>
+        <div id="calc-result-container" class="hidden text-center space-y-5 py-2">
+          <div class="w-12 h-12 bg-indigo-500/10 border border-indigo-500/20 rounded-full flex items-center justify-center mx-auto text-indigo-500"><i data-lucide="calculator" class="w-6 h-6"></i></div>
+          <div class="space-y-2">
+            <h3 class="text-base font-bold text-[var(--color-text)]">Расчет стоимости завершен!</h3>
+            <div class="text-2xl font-extrabold text-[var(--color-text)] bg-[var(--color-surface)] py-3 px-6 rounded-xl border border-[var(--color-border)] inline-block" id="calc-final-price">0 ₽</div>
+            <p style="color: var(--color-muted)" class="text-xs max-w-xs mx-auto">Расчет произведен автоматически по формуле вашей Google Таблицы.</p>
           </div>
+          <a href="https://t.me/Julskazka" target="_blank" rel="noopener noreferrer" class="btn-press btn-primary py-2.5 flex items-center justify-center space-x-2 text-xs">
+            <span>Обсудить смету в Telegram</span>
+            <i data-lucide="send" class="w-3.5 h-3.5"></i>
+          </a>
         </div>
       </div>
-    </section>
+    </div>
   `;
 
-  const element = createElement(html);
-  const getInt = (el, attr) => parseInt(el.getAttribute(attr) || '0', 10);
+  const el = createElement(html);
+  let step = 0;
+  const coefficients = [];
 
-  function calculate() {
-    const typeSelect = element.querySelector('#calc-type');
-    const selectedOption = typeSelect.options[typeSelect.selectedIndex];
-    
-    let basePrice = getInt(selectedOption, 'data-price');
-    let baseDays = getInt(selectedOption, 'data-days');
-    let addonPrice = 0, addonDays = 0, hasGetcourse = false;
+  function showQuestion() {
+    if (step >= STEPS.length) { showResults(); return; }
+    const qData = STEPS[step];
+    el.querySelector('#calc-step-text').textContent = `Шаг ${step + 1} из 10`;
+    el.querySelector('#calc-progress-bar').style.width = `${((step + 1) / 10) * 100}%`;
+    el.querySelector('#calc-question-title').textContent = qData.n;
 
-    ['#opt-vibe', '#opt-getcourse', '#opt-crm'].forEach(sel => {
-      const opt = element.querySelector(sel);
-      if (opt.checked) {
-        addonPrice += getInt(opt, 'data-price');
-        addonDays += getInt(opt, 'data-days');
-        if (sel === '#opt-getcourse') hasGetcourse = true;
-      }
+    const list = el.querySelector('#calc-options-list');
+    list.innerHTML = '';
+    qData.opts.forEach(opt => {
+      const btn = createElement(`
+        <button class="btn-press w-full text-left px-4 py-2.5 text-xs bg-[var(--color-surface)] hover:bg-[var(--color-border)] text-[var(--color-text)] rounded-xl border border-[var(--color-border)] transition-all">
+          ${opt.t} (x${opt.c})
+        </button>
+      `);
+      btn.addEventListener('click', () => { coefficients.push(opt.c); step++; showQuestion(); });
+      list.appendChild(btn);
     });
-
-    let totalPrice = basePrice + addonPrice;
-    let totalDays = baseDays + addonDays;
-
-    if (element.querySelector('input[name="calc-speed"]:checked').value === 'fast') {
-      totalPrice = Math.round(totalPrice * 1.3);
-      totalDays = Math.max(1, Math.round(totalDays * 0.7));
-    }
-
-    element.querySelector('#calc-result-price').textContent = formatPrice(totalPrice);
-    element.querySelector('#calc-result-days').textContent = `${totalDays} дн.`;
-    element.querySelector('#calc-result-gc').textContent = hasGetcourse ? 'Да' : 'Нет';
   }
 
-  element.querySelector('#calc-type').addEventListener('change', calculate);
-  element.querySelector('#opt-vibe').addEventListener('change', calculate);
-  element.querySelector('#opt-getcourse').addEventListener('change', calculate);
-  element.querySelector('#opt-crm').addEventListener('change', calculate);
-  element.querySelectorAll('input[name="calc-speed"]').forEach(radio => radio.addEventListener('change', calculate));
+  function showResults() {
+    el.querySelector('#calc-question-container').classList.add('hidden');
+    el.querySelector('#calc-step-text').parentElement.classList.add('hidden');
+    
+    // Формула: BASE_PRICE * Coeff1 * Coeff2 ...
+    let finalPrice = BASE_PRICE;
+    coefficients.forEach(c => { finalPrice *= c; });
+    finalPrice = Math.round(finalPrice);
 
-  setTimeout(calculate, 0);
-  return element;
+    el.querySelector('#calc-final-price').textContent = formatPrice(finalPrice);
+    el.querySelector('#calc-result-container').classList.remove('hidden');
+    if (window.lucide) window.lucide.createIcons();
+  }
+
+  const closeBtn = el.querySelector('#calc-close');
+  const close = () => { el.classList.add('hidden'); step = 0; coefficients.length = 0; el.querySelector('#calc-question-container').classList.remove('hidden'); el.querySelector('#calc-step-text').parentElement.classList.remove('hidden'); el.querySelector('#calc-result-container').classList.add('hidden'); showQuestion(); };
+  closeBtn.addEventListener('click', close);
+  el.addEventListener('click', (e) => { if (e.target === el) close(); });
+
+  setTimeout(showQuestion, 0);
+  return el;
 }

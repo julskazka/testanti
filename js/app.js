@@ -31,12 +31,12 @@ function initApp() {
   mainEl.appendChild(createHero());
   mainEl.appendChild(createServices());
   mainEl.appendChild(createPortfolio());
-  mainEl.appendChild(createCalculator());
 
   appEl.appendChild(mainEl);
 
-  // 4. Добавляем модалку квиза в самый низ (вне основного потока)
+  // 4. Добавляем модалки в самый низ (вне основного потока)
   appEl.appendChild(createQuiz());
+  appEl.appendChild(createCalculator());
 
   // 5. Добавляем подвал сайта
   appEl.appendChild(createFooter());
@@ -50,7 +50,16 @@ function initApp() {
     });
   });
 
-  // 7. Инициализируем иконки Lucide
+  // 7. Вешаем обработчик для открытия модалки калькулятора
+  document.querySelectorAll('a[href="#calculator"]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const modal = document.getElementById('calc-modal');
+      if (modal) modal.classList.remove('hidden');
+    });
+  });
+
+  // 8. Инициализируем иконки Lucide
   initIcons();
 }
 
