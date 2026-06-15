@@ -1,31 +1,45 @@
 // js/app.js
 // Главная точка входа приложения.
-// Здесь импортируются и собираются все компоненты.
+// Здесь собираются все компоненты в единую структуру.
 
 import { initIcons } from './utils.js';
-
-// Импортируй компоненты по мере их создания:
-// import { renderHeader }   from './components/header.js';
-// import { renderQuiz }     from './components/quiz.js';
-// import { renderLanding }  from './components/landing.js';
+import { createHeader, createFooter } from './components/header.js';
+import { createHero } from './components/hero.js';
+import { createServices } from './components/services.js';
+import { createCalculator } from './components/calculator.js';
+import { createContact } from './components/contact.js';
 
 /**
  * Инициализация и рендер приложения.
  */
 function initApp() {
   const appEl = document.getElementById('app');
+  if (!appEl) return;
 
-  appEl.innerHTML = `
-    <main class="max-w-xl mx-auto px-6 pt-8 pb-8 safe-top safe-bottom fade-in">
-      <h1 class="text-2xl font-bold mb-2">My Vibe App</h1>
-      <p style="color: var(--color-muted)" class="text-sm">
-        Проект готов. Попроси агента создать что угодно — квиз, лендинг, игру…
-      </p>
-    </main>
-  `;
+  // Очищаем стартовое содержимое
+  appEl.innerHTML = '';
 
+  // 1. Добавляем шапку сайта
+  appEl.appendChild(createHeader());
+
+  // 2. Создаем контейнер для основного контента
+  const mainEl = document.createElement('main');
+  mainEl.className = 'max-w-4xl mx-auto px-6 pt-6 pb-12 safe-top safe-bottom space-y-16';
+
+  // 3. Монтируем секции лендинга в main
+  mainEl.appendChild(createHero());
+  mainEl.appendChild(createServices());
+  mainEl.appendChild(createCalculator());
+  mainEl.appendChild(createContact());
+
+  appEl.appendChild(mainEl);
+
+  // 4. Добавляем подвал сайта
+  appEl.appendChild(createFooter());
+
+  // 5. Инициализируем иконки Lucide
   initIcons();
 }
 
-// Запуск
+// Запуск приложения
 initApp();
