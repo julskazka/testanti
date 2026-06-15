@@ -23,10 +23,10 @@ export function createServices() {
 
         <!-- Сетка услуг (3 карточки) -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-          <!-- Услуга 1: Архитектура воронок -->
-          <div class="card flex flex-col justify-between hover:border-indigo-500/40 hover:shadow-lg hover:shadow-indigo-500/5 transition-all duration-300">
+          <!-- Услуга 1: Архитектура воронок (Оранжевый) -->
+          <div class="card flex flex-col justify-between hover:border-orange-500/40 hover:shadow-lg hover:shadow-orange-500/5 transition-all duration-300">
             <div class="space-y-3">
-              <div class="w-10 h-10 rounded-xl bg-indigo-500/10 flex items-center justify-center text-indigo-600 dark:text-indigo-400">
+              <div class="w-10 h-10 rounded-xl bg-orange-500/10 flex items-center justify-center text-orange-600">
                 <i data-lucide="git-branch" class="w-5 h-5"></i>
               </div>
               <h3 class="font-bold text-base text-[var(--color-text)]">Архитектура и логика воронок</h3>
@@ -35,14 +35,14 @@ export function createServices() {
               </p>
             </div>
             <div class="pt-4 border-t border-[var(--color-border)] mt-4">
-              <span class="text-xs font-semibold text-indigo-500">С фокусом на конверсию</span>
+              <span class="text-xs font-semibold text-orange-500">С фокусом на конверсию</span>
             </div>
           </div>
 
-          <!-- Услуга 2: Разработка в NotiBot + Vibe Coding -->
-          <div class="card flex flex-col justify-between hover:border-purple-500/40 hover:shadow-lg hover:shadow-purple-500/5 transition-all duration-300">
+          <!-- Услуга 2: Разработка в NotiBot + Vibe Coding (Мятный) -->
+          <div class="card flex flex-col justify-between hover:border-emerald-500/40 hover:shadow-lg hover:shadow-emerald-500/5 transition-all duration-300">
             <div class="space-y-3">
-              <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-600 dark:text-purple-400">
+              <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-600">
                 <i data-lucide="code" class="w-5 h-5"></i>
               </div>
               <h3 class="font-bold text-base text-[var(--color-text)]">NotiBot + Vibe Coding</h3>
@@ -51,14 +51,14 @@ export function createServices() {
               </p>
             </div>
             <div class="pt-4 border-t border-[var(--color-border)] mt-4">
-              <span class="text-xs font-semibold text-purple-500">Быстрый запуск и кастомизация</span>
+              <span class="text-xs font-semibold text-emerald-600">Быстрый запуск и кастомизация</span>
             </div>
           </div>
 
-          <!-- Услуга 3: Автоматизация и Аналитика -->
-          <div class="card flex flex-col justify-between hover:border-pink-500/40 hover:shadow-lg hover:shadow-pink-500/5 transition-all duration-300">
+          <!-- Услуга 3: Автоматизация и Аналитика (Янтарный/Желтый) -->
+          <div class="card flex flex-col justify-between hover:border-amber-500/40 hover:shadow-lg hover:shadow-amber-500/5 transition-all duration-300">
             <div class="space-y-3">
-              <div class="w-10 h-10 rounded-xl bg-pink-500/10 flex items-center justify-center text-pink-600 dark:text-pink-400">
+              <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-600">
                 <i data-lucide="sliders" class="w-5 h-5"></i>
               </div>
               <h3 class="font-bold text-base text-[var(--color-text)]">Автоматизация & Аналитика</h3>
@@ -67,32 +67,32 @@ export function createServices() {
               </p>
             </div>
             <div class="pt-4 border-t border-[var(--color-border)] mt-4">
-              <span class="text-xs font-semibold text-pink-500">Автоматизация процессов</span>
+              <span class="text-xs font-semibold text-amber-600">Автоматизация процессов</span>
             </div>
           </div>
         </div>
 
         <!-- Экспертный блок -->
-        <div id="about" class="card bg-gradient-to-tr from-indigo-500/5 to-purple-500/5 border border-indigo-500/10 p-6 rounded-2xl space-y-4">
+        <div id="about" class="card bg-gradient-to-tr from-orange-500/5 to-emerald-500/5 border border-orange-500/10 p-6 rounded-2xl space-y-4">
           <h4 class="font-bold text-sm text-[var(--color-text)] flex items-center gap-2">
-            <i data-lucide="shield-check" class="w-4 h-4 text-indigo-500"></i>
+            <i data-lucide="shield-check" class="w-4 h-4 text-orange-500"></i>
             Мой подход к проектированию Mini App
           </h4>
           <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-[var(--color-muted)]">
             <li class="flex items-start gap-2">
-              <i data-lucide="check" class="w-3.5 h-3.5 text-green-500 shrink-0 mt-0.5"></i>
+              <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0 mt-0.5"></i>
               <span>Адаптация механики под конкретный рынок и нишу</span>
             </li>
             <li class="flex items-start gap-2">
-              <i data-lucide="check" class="w-3.5 h-3.5 text-green-500 shrink-0 mt-0.5"></i>
+              <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0 mt-0.5"></i>
               <span>Логика экранов, переходов и удобство пользователя</span>
             </li>
             <li class="flex items-start gap-2">
-              <i data-lucide="check" class="w-3.5 h-3.5 text-green-500 shrink-0 mt-0.5"></i>
+              <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0 mt-0.5"></i>
               <span>Поиск слабых мест и постоянное улучшение конверсий</span>
             </li>
             <li class="flex items-start gap-2">
-              <i data-lucide="check" class="w-3.5 h-3.5 text-green-500 shrink-0 mt-0.5"></i>
+              <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0 mt-0.5"></i>
               <span>Связка NotiBot с общей воронкой и CRM / GetCourse</span>
             </li>
           </ul>

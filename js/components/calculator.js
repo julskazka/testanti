@@ -30,7 +30,7 @@ export function createCalculator() {
         <div class="flex items-center justify-between text-[11px] text-[var(--color-muted)]">
           <span id="calc-step-text">Шаг 1 из 10</span>
           <div class="w-24 h-1.5 bg-[var(--color-border)] rounded-full overflow-hidden">
-            <div id="calc-progress-bar" class="h-full bg-indigo-500 transition-all duration-300" style="width: 10%"></div>
+            <div id="calc-progress-bar" class="h-full bg-orange-500 transition-all duration-300" style="width: 10%"></div>
           </div>
         </div>
         <div id="calc-question-container" class="space-y-4">
@@ -38,10 +38,10 @@ export function createCalculator() {
           <div id="calc-options-list" class="flex flex-col gap-2"></div>
         </div>
         <div id="calc-result-container" class="hidden text-center space-y-5 py-2">
-          <div class="w-12 h-12 bg-indigo-500/10 border border-indigo-500/20 rounded-full flex items-center justify-center mx-auto text-indigo-500"><i data-lucide="calculator" class="w-6 h-6"></i></div>
+          <div class="w-12 h-12 bg-orange-500/10 border border-orange-500/20 rounded-full flex items-center justify-center mx-auto text-orange-500"><i data-lucide="calculator" class="w-6 h-6"></i></div>
           <div class="space-y-2">
             <h3 class="text-base font-bold text-[var(--color-text)]">Расчет стоимости завершен!</h3>
-            <div class="text-2xl font-extrabold text-[var(--color-text)] bg-[var(--color-surface)] py-3 px-6 rounded-xl border border-[var(--color-border)] inline-block" id="calc-final-price">0 ₽</div>
+            <div class="text-2xl font-extrabold text-[var(--color-text)] bg-[var(--color-surface)] py-3 px-6 rounded-xl border border-[var(--color-border)] inline-block animate-pulse" id="calc-final-price">0 ₽</div>
             <p style="color: var(--color-muted)" class="text-xs max-w-xs mx-auto">Расчет произведен автоматически по формуле вашей Google Таблицы.</p>
           </div>
           <a href="https://t.me/Julskazka" target="_blank" rel="noopener noreferrer" class="btn-press btn-primary py-2.5 flex items-center justify-center space-x-2 text-xs">
@@ -68,7 +68,7 @@ export function createCalculator() {
     list.innerHTML = '';
     qData.opts.forEach(opt => {
       const btn = createElement(`
-        <button class="btn-press w-full text-left px-4 py-2.5 text-xs bg-[var(--color-surface)] hover:bg-[var(--color-border)] text-[var(--color-text)] rounded-xl border border-[var(--color-border)] transition-all">
+        <button class="btn-press w-full text-left px-4 py-2.5 text-xs bg-[var(--color-surface)] hover:bg-[var(--color-border)] text-[var(--color-text)] rounded-xl border border-[var(--color-border)] transition-all hover:border-orange-500/40">
           ${opt.t} (x${opt.c})
         </button>
       `);
@@ -81,7 +81,6 @@ export function createCalculator() {
     el.querySelector('#calc-question-container').classList.add('hidden');
     el.querySelector('#calc-step-text').parentElement.classList.add('hidden');
     
-    // Формула: BASE_PRICE * Coeff1 * Coeff2 ...
     let finalPrice = BASE_PRICE;
     coefficients.forEach(c => { finalPrice *= c; });
     finalPrice = Math.round(finalPrice);

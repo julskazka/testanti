@@ -58,7 +58,7 @@ export function createQuiz() {
         <div class="flex items-center justify-between text-[11px] text-[var(--color-muted)]">
           <span id="quiz-step-text">Вопрос 1 из 6</span>
           <div class="w-24 h-1.5 bg-[var(--color-border)] rounded-full overflow-hidden">
-            <div id="quiz-progress-bar" class="h-full bg-indigo-500 transition-all duration-300" style="width: 16%"></div>
+            <div id="quiz-progress-bar" class="h-full bg-orange-500 transition-all duration-300" style="width: 16%"></div>
           </div>
         </div>
 
@@ -70,7 +70,7 @@ export function createQuiz() {
 
         <!-- Результаты -->
         <div id="quiz-result-container" class="hidden text-center space-y-5 py-2">
-          <div class="w-12 h-12 bg-green-500/10 border border-green-500/20 rounded-full flex items-center justify-center mx-auto text-green-500">
+          <div class="w-12 h-12 bg-emerald-500/10 border border-emerald-500/20 rounded-full flex items-center justify-center mx-auto text-emerald-500">
             <i data-lucide="check" class="w-6 h-6"></i>
           </div>
           <div class="space-y-2">
@@ -104,7 +104,7 @@ export function createQuiz() {
     list.innerHTML = '';
     qData.opts.forEach(opt => {
       const btn = createElement(`
-        <button class="btn-press w-full text-left px-4 py-2.5 text-xs bg-[var(--color-surface)] hover:bg-[var(--color-border)] text-[var(--color-text)] rounded-xl border border-[var(--color-border)] transition-all">
+        <button class="btn-press w-full text-left px-4 py-2.5 text-xs bg-[var(--color-surface)] hover:bg-[var(--color-border)] text-[var(--color-text)] rounded-xl border border-[var(--color-border)] transition-all hover:border-orange-500/40">
           ${opt.t}
         </button>
       `);

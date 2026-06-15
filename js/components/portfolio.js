@@ -26,7 +26,7 @@ export function createPortfolio() {
         <!-- Сетка кейсов -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           ${CASES.map(c => `
-            <div class="card p-0 overflow-hidden flex flex-col justify-between hover:border-indigo-500/40 hover:shadow-lg transition-all duration-300">
+            <div class="card p-0 overflow-hidden flex flex-col justify-between hover:border-orange-500/40 hover:shadow-lg transition-all duration-300">
               <div class="space-y-3">
                 <!-- Контейнер изображения с эффектом приближения -->
                 <div class="relative overflow-hidden aspect-video bg-slate-900 border-b border-[var(--color-border)]">
