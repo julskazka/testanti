@@ -9,7 +9,7 @@ import { createElement } from '../utils.js';
  */
 export function createHeader() {
   const html = `
-    <header class="sticky top-0 z-50 backdrop-blur-md bg-[rgba(255,255,255,0.8)] border-b border-[var(--color-border)]">
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-[#0b0f19]/85 border-b border-[var(--color-border)]">
       <div class="max-w-4xl mx-auto px-6 h-16 flex items-center justify-between">
         <!-- Логотип -->
         <a href="#" class="flex items-center space-x-2 btn-press">

@@ -40,7 +40,7 @@ export function createHero() {
         </p>
 
         <!-- Цитата-блок (Glassmorphism card) -->
-        <div class="card w-full text-left bg-[rgba(255,255,255,0.7)] border border-[var(--color-border)] shadow-md max-w-xl mt-4 slide-up">
+        <div class="card w-full text-left border border-[var(--color-border)] shadow-lg max-w-xl mt-4 slide-up">
           <div class="flex items-start space-x-4">
             <span class="text-3xl text-orange-500 font-serif leading-none">“</span>
             <div class="space-y-3 text-xs sm:text-sm leading-relaxed text-[var(--color-muted)]">

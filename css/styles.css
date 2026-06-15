@@ -12,8 +12,8 @@ html {
   --color-text:    #f8fafc; /* контрастный светлый */
   --color-muted:   #94a3b8;
   --color-accent:  #f97316; /* оранжевый */
-  --color-surface: rgba(30, 41, 59, 0.45);
-  --color-border:  rgba(249, 115, 22, 0.15); /* оранжевый ободок */
+  --color-surface: #111625; /* сплошная темная подложка */
+  --color-border:  rgba(249, 115, 22, 0.25); /* оранжевый ободок как на скрине */
 }
 
 body {
