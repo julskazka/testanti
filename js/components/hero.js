@@ -1,5 +1,5 @@
 // js/components/hero.js
-// Главный hero-блок с позиционированием архитектора воронкок NotiBot.
+// Главный hero-блок с позиционированием архитектора воронок NotiBot.
 
 import { createElement } from '../utils.js';
 
@@ -14,16 +14,16 @@ export function createHero() {
       <div class="absolute -top-40 -left-40 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
       <div class="absolute top-1/2 -right-40 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
-      <div class="relative flex flex-col items-center text-center space-y-6 max-w-2xl mx-auto">
+      <div class="relative flex flex-col items-center text-center space-y-8 max-w-2xl mx-auto">
         <!-- Бейджики специализаций -->
-        <div class="flex flex-wrap gap-2 justify-center fade-in">
-          <span class="px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20">
+        <div class="flex flex-wrap gap-3.5 justify-center fade-in">
+          <span class="px-5 py-2 rounded-full text-xs sm:text-sm font-bold bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/25 shadow-sm">
             Архитектор Mini App
           </span>
-          <span class="px-3 py-1 rounded-full text-xs font-semibold bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/20">
-            Эксперт NotiBot
+          <span class="px-5 py-2 rounded-full text-xs sm:text-sm font-bold bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/25 shadow-sm">
+            Специалист GetCourse
           </span>
-          <span class="px-3 py-1 rounded-full text-xs font-semibold bg-pink-500/10 text-pink-600 dark:text-pink-400 border border-pink-500/20">
+          <span class="px-5 py-2 rounded-full text-xs sm:text-sm font-bold bg-pink-500/10 text-pink-600 dark:text-pink-400 border border-pink-500/25 shadow-sm">
             Vibe Coding
           </span>
         </div>

@@ -6,6 +6,7 @@ import { initIcons } from './utils.js';
 import { createHeader, createFooter } from './components/header.js';
 import { createHero } from './components/hero.js';
 import { createServices } from './components/services.js';
+import { createPortfolio } from './components/portfolio.js';
 import { createCalculator } from './components/calculator.js';
 import { createQuiz } from './components/quiz.js';
 
@@ -29,15 +30,27 @@ function initApp() {
   // 3. Монтируем секции лендинга в main
   mainEl.appendChild(createHero());
   mainEl.appendChild(createServices());
+  mainEl.appendChild(createPortfolio());
   mainEl.appendChild(createCalculator());
-  mainEl.appendChild(createQuiz());
 
   appEl.appendChild(mainEl);
 
-  // 4. Добавляем подвал сайта
+  // 4. Добавляем модалку квиза в самый низ (вне основного потока)
+  appEl.appendChild(createQuiz());
+
+  // 5. Добавляем подвал сайта
   appEl.appendChild(createFooter());
 
-  // 5. Инициализируем иконки Lucide
+  // 6. Вешаем обработчик для открытия модалки квиза
+  document.querySelectorAll('a[href="#quiz"]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const modal = document.getElementById('quiz-modal');
+      if (modal) modal.classList.remove('hidden');
+    });
+  });
+
+  // 7. Инициализируем иконки Lucide
   initIcons();
 }
 
