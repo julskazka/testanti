@@ -7,7 +7,7 @@ import { createHeader, createFooter } from './components/header.js';
 import { createHero } from './components/hero.js';
 import { createServices } from './components/services.js';
 import { createCalculator } from './components/calculator.js';
-import { createContact } from './components/contact.js';
+import { createQuiz } from './components/quiz.js';
 
 /**
  * Инициализация и рендер приложения.
@@ -30,7 +30,7 @@ function initApp() {
   mainEl.appendChild(createHero());
   mainEl.appendChild(createServices());
   mainEl.appendChild(createCalculator());
-  mainEl.appendChild(createContact());
+  mainEl.appendChild(createQuiz());
 
   appEl.appendChild(mainEl);
 

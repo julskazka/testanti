@@ -1,5 +1,5 @@
 // js/components/hero.js
-// Главный hero-блок с позиционированием архитектора воронок.
+// Главный hero-блок с позиционированием архитектора воронкок NotiBot.
 
 import { createElement } from '../utils.js';
 
@@ -21,16 +21,16 @@ export function createHero() {
             Архитектор Mini App
           </span>
           <span class="px-3 py-1 rounded-full text-xs font-semibold bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/20">
-            Специалист GetCourse
+            Эксперт NotiBot
           </span>
           <span class="px-3 py-1 rounded-full text-xs font-semibold bg-pink-500/10 text-pink-600 dark:text-pink-400 border border-pink-500/20">
-            Vibe Coding & Воронки
+            Vibe Coding
           </span>
         </div>
 
         <!-- Заголовок -->
         <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[var(--color-text)] leading-tight slide-up">
-          Проектирую <span class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">системы продаж</span> внутри Telegram Mini Apps
+          Проектирую <span class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">системы продаж</span> в Telegram Mini Apps
         </h1>
 
         <!-- Подзаголовок (Философия) -->
@@ -44,20 +44,20 @@ export function createHero() {
           <div class="flex items-start space-x-3">
             <span class="text-2xl text-purple-500 leading-none">“</span>
             <p class="text-xs sm:text-sm italic leading-relaxed text-[var(--color-muted)]">
-              Я не просто нажимаю кнопки в конструкторе. Я выстраиваю путь клиента: анализирую продукт, продумываю сценарии прогрева, сегментирую базу и связываю NotiBot с вашей CRM/GetCourse.
+              Я не просто нажимаю кнопки в конструкторе NotiBot. Я выстраиваю путь клиента: анализирую продукт, продумываю сценарии прогрева, сегментирую базу и создаю гибкие кастомные решения на базе Vibe Coding.
             </p>
           </div>
         </div>
 
         <!-- Кнопки действий -->
         <div class="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto pt-4 slide-up">
-          <a href="#calculator" class="btn-press btn-primary w-full sm:w-auto flex items-center justify-center space-x-2">
-            <span>Рассчитать проект</span>
-            <i data-lucide="calculator" class="w-4 h-4"></i>
+          <a href="#quiz" class="btn-press btn-primary w-full sm:w-auto flex items-center justify-center space-x-2">
+            <span>Пройти аудит воронки</span>
+            <i data-lucide="help-circle" class="w-4 h-4"></i>
           </a>
-          <a href="#contact" class="btn-press w-full sm:w-auto flex items-center justify-center space-x-2 px-6 py-3 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] hover:bg-[var(--color-border)] text-[var(--color-text)] text-sm font-semibold transition-all">
-            <span>Обсудить воронку</span>
-            <i data-lucide="message-square" class="w-4 h-4"></i>
+          <a href="#calculator" class="btn-press w-full sm:w-auto flex items-center justify-center space-x-2 px-6 py-3 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] hover:bg-[var(--color-border)] text-[var(--color-text)] text-sm font-semibold transition-all">
+            <span>Рассчитать стоимость</span>
+            <i data-lucide="calculator" class="w-4 h-4"></i>
           </a>
         </div>
       </div>

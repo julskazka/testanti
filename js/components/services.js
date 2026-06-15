@@ -17,7 +17,7 @@ export function createServices() {
             Чем я могу быть полезна вашему бизнесу
           </h2>
           <p style="color: var(--color-muted)" class="text-xs sm:text-sm max-w-md mx-auto">
-            От проектирования CJM (карты пути клиента) до технической связки с GetCourse и кастомного Vibe-кода.
+            От проектирования пути клиента внутри NotiBot до технического Vibe-кодинга и интеграции с внешними CRM.
           </p>
         </div>
 
@@ -55,15 +55,15 @@ export function createServices() {
             </div>
           </div>
 
-          <!-- Услуга 3: Интеграции & GetCourse -->
+          <!-- Услуга 3: Автоматизация и Аналитика -->
           <div class="card flex flex-col justify-between hover:border-pink-500/40 hover:shadow-lg hover:shadow-pink-500/5 transition-all duration-300">
             <div class="space-y-3">
               <div class="w-10 h-10 rounded-xl bg-pink-500/10 flex items-center justify-center text-pink-600 dark:text-pink-400">
-                <i data-lucide="database" class="w-5 h-5"></i>
+                <i data-lucide="sliders" class="w-5 h-5"></i>
               </div>
-              <h3 class="font-bold text-base text-[var(--color-text)]">Связка с GetCourse & CRM</h3>
+              <h3 class="font-bold text-base text-[var(--color-text)]">Автоматизация & Аналитика</h3>
               <p style="color: var(--color-muted)" class="text-xs leading-relaxed">
-                Как технический специалист GetCourse, настраиваю бесшовную передачу лидов, синхронизацию баз данных, сегментацию и выдачу доступов.
+                Сегментация пользователей, сбор баз данных, анализ поведения. Синхронизация NotiBot с внешними системами (включая GetCourse и CRM).
               </p>
             </div>
             <div class="pt-4 border-t border-[var(--color-border)] mt-4">
@@ -72,7 +72,7 @@ export function createServices() {
           </div>
         </div>
 
-        <!-- Экспертный блок ("Я не просто собираю...") -->
+        <!-- Экспертный блок -->
         <div id="about" class="card bg-gradient-to-tr from-indigo-500/5 to-purple-500/5 border border-indigo-500/10 p-6 rounded-2xl space-y-4">
           <h4 class="font-bold text-sm text-[var(--color-text)] flex items-center gap-2">
             <i data-lucide="shield-check" class="w-4 h-4 text-indigo-500"></i>
@@ -93,7 +93,7 @@ export function createServices() {
             </li>
             <li class="flex items-start gap-2">
               <i data-lucide="check" class="w-3.5 h-3.5 text-green-500 shrink-0 mt-0.5"></i>
-              <span>Связка NotiBot с общей воронкой и CRM GetCourse</span>
+              <span>Связка NotiBot с общей воронкой и CRM / GetCourse</span>
             </li>
           </ul>
         </div>
