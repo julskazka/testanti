@@ -1,5 +1,5 @@
 /* ===========================================
-   styles.css — Светлая, теплая и контрастная тема.
+   styles.css — Премиальная темная тема с оранжевыми/мятными акцентами.
    Размер файла строго ограничен до 150 строк.
    =========================================== */
 
@@ -8,15 +8,14 @@ html {
 }
 
 :root {
-  --color-bg:      #fbfbfd;
-  --color-text:    #0f172a;
-  --color-muted:   #4b5563;
+  --color-bg:      #0b0f19; /* глубокий темный */
+  --color-text:    #f8fafc; /* контрастный светлый */
+  --color-muted:   #94a3b8;
   --color-accent:  #f97316; /* оранжевый */
-  --color-surface: #ffffff;
-  --color-border:  rgba(249, 115, 22, 0.12); /* мягкий оранжевый ободок */
+  --color-surface: rgba(30, 41, 59, 0.45);
+  --color-border:  rgba(249, 115, 22, 0.15); /* оранжевый ободок */
 }
 
-/* Всегда светлая, чистая и легко читаемая тема */
 body {
   margin: 0;
   padding: 0;
@@ -61,7 +60,9 @@ body {
   border: 1px solid var(--color-border);
   border-radius: 20px;
   padding: 24px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -69,14 +70,14 @@ body {
   display: block;
   width: 100%;
   padding: 12px 24px;
-  background: linear-gradient(135deg, var(--color-accent), #f59e0b); /* оранжевый к желтому */
+  background: linear-gradient(135deg, var(--color-accent), #d97706); /* оранжевый к темному янтарному */
   color: #ffffff;
   font-size: 14px;
   font-weight: 600;
   border: none;
   border-radius: 14px;
   cursor: pointer;
-  box-shadow: 0 4px 14px rgba(249, 115, 22, 0.2);
+  box-shadow: 0 4px 14px rgba(249, 115, 22, 0.25);
 }
 
 .divider {
@@ -92,5 +93,14 @@ input[type="text"], select, textarea {
 
 input[type="text"]:focus, select:focus, textarea:focus {
   border-color: var(--color-accent);
-  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.15);
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.2);
+}
+
+/* Скрыть скроллбар */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

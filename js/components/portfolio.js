@@ -1,5 +1,5 @@
 // js/components/portfolio.js
-// Блок "Мои Кейсы" с галереей выполненных проектов.
+// Блок "Мои Кейсы" с галереей выполненных проектов и слайдером для мобильной версии.
 
 import { createElement } from '../utils.js';
 
@@ -23,15 +23,15 @@ export function createPortfolio() {
           </p>
         </div>
 
-        <!-- Сетка кейсов -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Контейнер для прокрутки (слайдер для мобилок, грид для десктопа) -->
+        <div id="cases-container" class="flex overflow-x-auto snap-x snap-mandatory gap-5 pb-4 scroll-smooth no-scrollbar md:grid md:grid-cols-3 md:overflow-x-visible md:snap-none md:pb-0">
           ${CASES.map(c => `
-            <div class="card p-0 overflow-hidden flex flex-col justify-between hover:border-orange-500/40 hover:shadow-lg transition-all duration-300">
+            <div class="card p-0 overflow-hidden flex flex-col justify-between hover:border-orange-500/40 hover:shadow-lg transition-all duration-300 w-[280px] shrink-0 snap-start md:w-auto md:shrink md:snap-align-none bg-[var(--color-surface)]">
               <div class="space-y-3">
-                <!-- Контейнер изображения с эффектом приближения -->
-                <div class="relative overflow-hidden aspect-video bg-slate-900 border-b border-[var(--color-border)]">
+                <!-- Контейнер изображения (картинка без обрезки) -->
+                <div class="relative overflow-hidden w-full flex items-center justify-center p-3 bg-slate-950/30 border-b border-[var(--color-border)]" style="height: 240px;">
                   <img src="${c.img}" alt="${c.title}" 
-                       class="w-full h-full object-cover transition-transform duration-500 hover:scale-105 cursor-pointer"
+                       class="max-w-full max-h-full object-contain rounded-lg transition-transform duration-500 hover:scale-105 cursor-pointer"
                        onclick="window.open('${c.img}', '_blank')">
                 </div>
                 <!-- Описание кейса -->
@@ -43,9 +43,31 @@ export function createPortfolio() {
             </div>
           `).join('')}
         </div>
+
+        <!-- Кнопки управления слайдером на мобильных -->
+        <div class="flex md:hidden justify-center items-center space-x-6 mt-4">
+          <button id="slide-prev" class="btn-press p-2 rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] text-orange-500 hover:bg-[var(--color-border)]">
+            <i data-lucide="chevron-left" class="w-5 h-5"></i>
+          </button>
+          <button id="slide-next" class="btn-press p-2 rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] text-orange-500 hover:bg-[var(--color-border)]">
+            <i data-lucide="chevron-right" class="w-5 h-5"></i>
+          </button>
+        </div>
       </div>
     </section>
   `;
 
-  return createElement(html);
+  const el = createElement(html);
+  const container = el.querySelector('#cases-container');
+
+  // Логика прокрутки по кнопкам
+  el.querySelector('#slide-prev').addEventListener('click', () => {
+    container.scrollBy({ left: -290, behavior: 'smooth' });
+  });
+
+  el.querySelector('#slide-next').addEventListener('click', () => {
+    container.scrollBy({ left: 290, behavior: 'smooth' });
+  });
+
+  return el;
 }
