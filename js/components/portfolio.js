@@ -13,7 +13,7 @@ const CASES = [
 
 export function createPortfolio() {
   const html = `
-    <section id="portfolio" class="py-12 scroll-mt-20">
+    <section id="portfolio" class="py-2 scroll-mt-20">
       <div class="space-y-8 max-w-4xl mx-auto">
         <!-- Заголовок секции -->
         <div class="text-center space-y-2">

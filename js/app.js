@@ -25,7 +25,7 @@ function initApp() {
 
   // 2. Создаем контейнер для основного контента
   const mainEl = document.createElement('main');
-  mainEl.className = 'max-w-4xl mx-auto px-6 pt-6 pb-12 safe-top safe-bottom space-y-16';
+  mainEl.className = 'max-w-4xl mx-auto px-6 pt-6 pb-12 safe-top safe-bottom space-y-8';
 
   // 3. Монтируем секции лендинга в main
   mainEl.appendChild(createHero());

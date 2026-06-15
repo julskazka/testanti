@@ -9,7 +9,7 @@ import { createElement } from '../utils.js';
  */
 export function createHero() {
   const html = `
-    <section class="relative pt-12 pb-16 overflow-hidden">
+    <section class="relative pt-12 pb-2 overflow-hidden">
       <!-- Фоновые декоративные градиенты (Оранжевый и Мятный) -->
       <div class="absolute -top-40 -left-40 w-96 h-96 bg-orange-500/5 rounded-full blur-3xl pointer-events-none"></div>
       <div class="absolute top-1/2 -right-40 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none"></div>

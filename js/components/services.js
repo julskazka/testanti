@@ -9,7 +9,7 @@ import { createElement } from '../utils.js';
  */
 export function createServices() {
   const html = `
-    <section id="services" class="py-12 scroll-mt-20">
+    <section id="services" class="py-2 scroll-mt-20">
       <div class="space-y-8 max-w-2xl mx-auto">
         <!-- Заголовок секции -->
         <div class="text-center space-y-2">
