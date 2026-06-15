@@ -40,12 +40,23 @@ export function createHero() {
         </p>
 
         <!-- Цитата-блок (Glassmorphism card) -->
-        <div class="card w-full text-left bg-[rgba(255,255,255,0.4)] dark:bg-[rgba(255,255,255,0.03)] backdrop-blur-md rounded-2xl p-5 border border-[var(--color-border)] shadow-sm max-w-lg mt-4 slide-up">
-          <div class="flex items-start space-x-3">
-            <span class="text-2xl text-purple-500 leading-none">“</span>
-            <p class="text-xs sm:text-sm italic leading-relaxed text-[var(--color-muted)]">
-              Я не просто нажимаю кнопки в конструкторе NotiBot. Я выстраиваю путь клиента: анализирую продукт, продумываю сценарии прогрева, сегментирую базу и создаю гибкие кастомные решения на базе Vibe Coding.
-            </p>
+        <div class="card w-full text-left bg-[rgba(255,255,255,0.4)] dark:bg-[rgba(255,255,255,0.03)] backdrop-blur-md rounded-3xl p-6 border border-[var(--color-border)] shadow-lg max-w-xl mt-4 slide-up">
+          <div class="flex items-start space-x-4">
+            <span class="text-3xl text-indigo-500 font-serif leading-none">“</span>
+            <div class="space-y-3 text-xs sm:text-sm leading-relaxed text-[var(--color-muted)]">
+              <p class="text-[var(--color-text)] font-semibold">
+                Я не просто собираю NotiBot «по кнопкам».
+              </p>
+              <p>
+                Я помогаю бизнесу превратить его в понятную систему, которая ведёт человека от первого интереса до заявки или покупки.
+              </p>
+              <p>
+                Смотрю на продукт, аудиторию и рынок, продумываю, как человек будет двигаться внутри воронки, где его нужно прогреть, где — разделить по интересам, а где — мягко довести до действия.
+              </p>
+              <p class="border-t border-[var(--color-border)] pt-3 text-[var(--color-text)]">
+                ✨ А с помощью <span class="font-semibold text-pink-500">Vibe Coding</span> можно делать не только стандартные сценарии, а более гибкие решения под конкретный бизнес: чтобы NotiBot работал не «как у всех», а под вашу задачу, вашу аудиторию и вашу систему продаж.
+              </p>
+            </div>
           </div>
         </div>
 
